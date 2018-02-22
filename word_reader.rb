@@ -1,5 +1,4 @@
 class WordReader
-
   def read_from_file(file_name)
     # Если файла не существует, сразу выходим из метода
     if !File.exist?(file_name)
@@ -11,5 +10,4 @@ class WordReader
     file.close
     return lines
   end
-
 end
