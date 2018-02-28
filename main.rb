@@ -14,7 +14,7 @@ answers_read = WordReader.new
 
 # Создаем массивы вопросов и ответов
 questions = questions_read.read_from_file(questions_file_name)
-answers = questions_read.read_from_file(answers_file_name)
+answers = answers_read.read_from_file(answers_file_name)
 
 # Выводим вопросы
 test.ask_question(questions)

@@ -1,7 +1,22 @@
 class Test
+  # Сделал сокращенную запись
+  attr_reader :answer_count
+  # Сделал константы для ответов
+  POSITIVE_ANSWER = "да"
+  NEGATIVE_ANSWER = "нет"
+  DEFAULT_ANSWER = "иногда"
+
+
   def initialize()
     @answer_count = 0
     @answers = []
+  end
+
+  # Вынес в метод проверку ввода пользователем
+  def user_input_correct?(user_input)
+    user_input == POSITIVE_ANSWER ||
+    user_input == DEFAULT_ANSWER ||
+    user_input == NEGATIVE_ANSWER
   end
 
   # Задаем вопросы и записываем ответы в массив
@@ -9,8 +24,8 @@ class Test
     questions.each do |question|
       puts "Вопрос: #{question}"
       user_input = nil
-      until (user_input == "да" || user_input == "иногда" || user_input == "нет")
-        # Просим пользователя ввести в консоли 'yes' или 'no'
+      until user_input_correct?(user_input)
+        # Просим пользователя ввести в консоли 'Да', 'Нет' или 'Иногда'
         puts "Введите 'Да', 'Нет' или 'Иногда' и нажмите Enter"
         user_input = STDIN.gets.chomp.downcase
       end
@@ -22,15 +37,11 @@ class Test
   # Рассчитываем результат
   def calc_result
       @answers.each do |answer|
-        if answer == "да"
+        if answer == POSITIVE_ANSWER
           @answer_count += 2
-        elsif answer == "иногда"
+        elsif answer == DEFAULT_ANSWER
           @answer_count += 1
         end
       end
-  end
-
-  def answer_count
-    @answer_count
   end
 end
