@@ -1,11 +1,8 @@
 class Test
-  # Сделал сокращенную запись
-  attr_reader :answer_count
   # Сделал константы для ответов
   POSITIVE_ANSWER = "да"
   NEGATIVE_ANSWER = "нет"
   DEFAULT_ANSWER = "иногда"
-
 
   def initialize()
     @answer_count = 0
