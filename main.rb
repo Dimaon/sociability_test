@@ -9,22 +9,19 @@ answers_file_name = File.dirname(__FILE__) + "/data/answers.txt"
 
 test = Test.new
 result = PrintResult.new
-questions_read = WordReader.new
-answers_read = WordReader.new
-
 # Создаем массивы вопросов и ответов
-questions = questions_read.read_from_file(questions_file_name)
-answers = answers_read.read_from_file(answers_file_name)
+questions = WordReader.new(questions_file_name)
+answers = WordReader.new(answers_file_name)
 
 # Выводим вопросы
-test.ask_question(questions)
+test.ask_question(questions.lines)
 
-test.calc_result
+calc_result = test.calc_result
 
 puts "Считаем результат..."
 
 sleep 2
 
-print_result = result.print_result(test.answer_count,answers)
+print_result = result.print_result(calc_result, answers.lines)
 
 puts "Результат: #{print_result}"
